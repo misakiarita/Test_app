@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root 'blogs#index'
   devise_for :users
-  # devise_scope :user do
-  #   root "users/sessions#new"
-  # end
+  resources :users
+  resources :conversations do
+    resources :messages
+  end
+  
+  
 
-  # devise_for :users, :controllers => {
-  #   sessions: 'users/sessions'
-  # }
   resources :blogs
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

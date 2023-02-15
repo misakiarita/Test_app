@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+書いた人:<%= @user.name %>
+
+  <% if @user.id != current_user.id %>
+    <% if @conversation.present? %>
+      <%= link_to 'メッセージ一覧へ', conversations_path %>
+    <% else %>
+      <div class="item">
+        <%= link_to 'メッセージルーム作成', conversations_path(blog_id: @blog.id, member_ids: [current_user.id, @user.id]), method: :post, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  <% end %>
+
+<br>
   <strong>Title:</strong>
   <%= @blog.title %>
 </p>

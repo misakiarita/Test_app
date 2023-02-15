@@ -17,8 +17,10 @@
   <% if user_signed_in? %>
   <%= content_tag(:div, flash[:alert], class: "alert alert-danger") if flash[:alert] %>
   <div>ログイン中のユーザー:<%= current_user.name %></div>
-  <li><%= link_to 'ユーザー編集', edit_user_registration_path(current_user.id) %></li>
+    <li><%= link_to 'ユーザー編集', edit_user_registration_path(current_user.id) %></li>
     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to 'ユーザー一覧',  users_path %></li>
+   
   <% else %>
     <li><%= link_to 'ログイン', new_user_session_path %></li>
     <li><%= link_to 'サインアップ', new_user_registration_path %></l>i
